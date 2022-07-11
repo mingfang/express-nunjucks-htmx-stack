@@ -5,7 +5,7 @@ Features
 - Nunjucks server side templating with Markdown support
 - Nunjucks client side templating with Htmx extension
 - Htmx for dynamic client experience
-- Stying with DaisyUI and Tailwind CSS
+- Styling with DaisyUI and Tailwind CSS
 
 ### Dev
 ```shell
