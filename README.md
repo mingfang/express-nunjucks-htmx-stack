@@ -1,11 +1,11 @@
 ## Express-Nunjucks-Htmx Stack
 
 Features
-- Express server
-- Nunjucks server side templating with Markdown support
-- Nunjucks client side templating with Htmx extension
-- Htmx for dynamic client experience
-- Styling with DaisyUI and Tailwind CSS
+- [Express](https://expressjs.com) server
+- [Nunjucks](https://mozilla.github.io/nunjucks/) server side templating with Markdown support
+- Nunjucks client side templating with [Htmx extension](https://htmx.org/extensions/client-side-templates/)
+- [Htmx](https://htmx.org) for dynamic client experience
+- Styling with [DaisyUI](https://daisyui.com) and [Tailwind CSS](https://tailwindcss.com)
 
 ### Dev
 ```shell
