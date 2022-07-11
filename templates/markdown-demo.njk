@@ -1,0 +1,21 @@
+{% extends "./layouts/layout.njk" %}
+
+{% block styles %}
+{{ super() }}
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/highlightjs-themes@1.0.0/tomorrow-night-blue.css">
+{% endblock %}
+
+{% block content %}
+    <div class="container px-6 py-3 mx-auto">
+        <div class="text-sm breadcrumbs">
+            <ul>
+                <li><a href="/">Demos</a></li>
+                <li>Markdown</li>
+            </ul>
+        </div>
+
+        <section class="prose">
+        {% markdown './demo.md' %}
+        </section>
+    </div>
+{% endblock %}
