@@ -1,5 +1,6 @@
 {% extends "./layouts/layout.njk" %}
 {% block scripts %}
+    {{ super() }}
     <script src="//unpkg.com/htmx.org@1.7.0"></script>
     <script src="//unpkg.com/htmx.org/dist/ext/client-side-templates.js"></script>
     <script src="//mozilla.github.io/nunjucks/files/nunjucks.js"></script>
@@ -27,6 +28,8 @@
             </li>
         </ul>
 
+    </div>
+    <div class="container px-6 py-3 mx-auto">
         <div id="target"></div>
     </div>
 {% endblock %}
