@@ -1,4 +1,5 @@
-{% extends "./layouts/layout.njk" %}
+{% extends "_includes/layouts/layout.njk" %}
+
 {% block scripts %}
     {{ super() }}
     <script src="//unpkg.com/htmx.org@1.7.0"></script>
@@ -17,12 +18,12 @@
 
         <ul>
             <li>
-                <div hx-get="/client-side-template" hx-target="#target">
+                <div hx-get="/fragments/client-side-template" hx-target="#target">
                     <a class="link">Client Side Template Demo</a>
                 </div>
             </li>
             <li>
-                <div hx-get="/click-to-edit" hx-target="#target">
+                <div hx-get="/fragments/click-to-edit" hx-target="#target">
                     <a class="link">Click To Edit</a>
                 </div>
             </li>

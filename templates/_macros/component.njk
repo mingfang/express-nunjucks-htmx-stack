@@ -1,0 +1,5 @@
+{# adopted from https://www.trysmudford.com/blog/encapsulated-11ty-components/ #}
+
+{%- macro component(name, params) -%}
+    {% include "_includes/components/" + name + ".njk" ignore missing %}
+{%- endmacro -%}

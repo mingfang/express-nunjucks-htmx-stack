@@ -1,4 +1,4 @@
-{% extends "./layouts/layout.njk" %}
+{% extends "_includes/layouts/layout.njk" %}
 
 {% block styles %}
 {{ super() }}
@@ -15,7 +15,7 @@
         </div>
 
         <section class="prose">
-        {% markdown './demo.md' %}
+        {% markdown '_markdown/demo.md' %}
         </section>
     </div>
 {% endblock %}

@@ -1,0 +1,13 @@
+{% extends "_includes/layouts/layout.njk" %}
+
+{% block content %}
+    <div class="container px-6 py-3 mx-auto">
+        <div class="text-sm breadcrumbs">
+            <ul>
+                <li><a href="/">Demos</a></li>
+                <li>Components</li>
+            </ul>
+        </div>
+        {{ component('button', {primary: 'hello', secondary: 'world'}) }}
+    </div>
+{% endblock %}
