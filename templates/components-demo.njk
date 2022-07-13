@@ -8,6 +8,10 @@
                 <li>Components</li>
             </ul>
         </div>
-        {{ component('button', {primary: 'hello', secondary: 'world'}) }}
+
+        <div class="container px-6 py-3 mx-auto">
+            {{ component('button', {primary: 'hello', secondary: 'world'}) }}
+            {{ component('button', {primary: 'another', secondary: 'one'}) }}
+        </div>
     </div>
 {% endblock %}

@@ -6,6 +6,7 @@ Features
 - Nunjucks client side templating with [Htmx extension](https://htmx.org/extensions/client-side-templates/)
 - [Htmx](https://htmx.org) for dynamic client experience
 - Styling with [DaisyUI](https://daisyui.com) and [Tailwind CSS](https://tailwindcss.com)
+- Integrate with Python using [JSPython](https://github.com/extremeheat/JSPyBridge)
 
 ### Dev
 ```shell

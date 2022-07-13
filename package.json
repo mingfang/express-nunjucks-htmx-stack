@@ -9,7 +9,9 @@
     "dev": "concurrently 'npm:dev:*'",
     "build:tailwind": "tailwindcss -i ./tailwind.css -o ./public/app.css --minify",
     "build": "concurrently 'npm:build:*'",
-    "start": "node server/index.js"
+    "postinstall": "cd python; pip install -r requirements.txt",
+    "start:node": "node server/index.js",
+    "start": "concurrently 'npm:start:*'"
   },
   "author": "",
   "license": "ISC",
@@ -22,7 +24,8 @@
     "marked": "^4.0.17",
     "node-fetch": "^2.6.7",
     "numeral": "^2.0.6",
-    "nunjucks": "^3.2.3"
+    "nunjucks": "^3.2.3",
+    "pythonia": "^1.0.0"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.3",

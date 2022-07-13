@@ -1,5 +1,28 @@
+const fs = require('fs')
+const path = require('path')
 const {server, listen} = require('./express.config')
 const {render} = require('./nunjucks/nunjucks.config')
+
+/* python */
+const python = require('pythonia').python
+let example, pandas
+const pyFile = path.resolve(__dirname, '../python/add.py')
+const pandasFile = path.resolve(__dirname, '../python/pandas.py')
+
+;(async () => {
+    example = await python(pyFile)
+    pandas = await python(pandasFile)
+  }
+)()
+
+server.get('/python/add/:op1/:op2', async (req, res) => {
+  const value = await example.add(Number(req.params['op1']), Number(req.params['op2']))
+  res.send(`${value}`)
+})
+server.get('/pandas/random', async (req, res) => {
+
+  res.send(await pandas.random())
+})
 
 /* render *.njk files relative to templates dir */
 
@@ -12,9 +35,6 @@ const renderPath = (subPath = '.') =>
 server.get('/:template?', renderPath())
 
 /* render from sub directories */
-
-const fs = require('fs')
-const path = require('path')
 
 const walkDir = (dir, callback) => {
   fs.readdirSync(dir).forEach(f => {
