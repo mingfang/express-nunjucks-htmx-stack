@@ -2,17 +2,8 @@
 
 {% block content %}
     <div class="container px-6 py-3 mx-auto">
-        <div class="text-sm breadcrumbs">
-            <ul>
-                <li>Demos</li>
-            </ul>
-        </div>
-
-        <div class="tabs">
-            <a class="tab tab-bordered" href="/markdown-demo">Markdown</a>
-            <a class="tab tab-bordered" href="/htmx-demo">Htmx</a>
-            <a class="tab tab-bordered" href="/components-demo">Components</a>
-            <a class="tab tab-bordered" href="/python-demo">Python</a>
-        </div>
+        <section class="prose">
+            {% markdown 'README.md' %}
+        </section>
     </div>
 {% endblock %}

@@ -9,24 +9,23 @@
     <title>{% block title %}Nunjucks Starter{% endblock %}</title>
 
     <link href="/app.css" rel="stylesheet">
-    {% block styles %}
-    {% endblock %}
 
-    <script src="https://cdn.jsdelivr.net/npm/theme-change@2.0.2/index.js"></script>
-    {% block scripts %}
-    {% endblock %}
+    <script src="//unpkg.com/htmx.org@1.8.0"></script>
+    <script src="//cdn.jsdelivr.net/npm/theme-change@2.0.2/index.js"></script>
 </head>
 <body>
 
-{% block navbar %}
-{% include "./navbar.njk" %}
-{% endblock %}
+<div class="container px-6 py-3 mx-auto">
+    {% include "./navbar.njk" %}
+</div>
 
-{% block content %}
-{% endblock %}
+<div id="hx-content">
+    {% block content %}
+    {% endblock %}
+</div>
 
-{% block footer  %}
-{% include "./footer.njk" %}
+{% block footer %}
+    {% include "./footer.njk" %}
 {% endblock %}
 
 </body>

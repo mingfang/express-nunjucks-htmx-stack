@@ -1,20 +1,21 @@
 {% extends "_includes/layouts/layout.njk" %}
-{% block title %}Markdown Demo {% endblock %}
+{% block title %}Mermaid Demo {% endblock %}
 
 {% block content %}
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/highlightjs-themes@1.0.0/tomorrow-night-blue.css">
-
     <div class="container px-6 py-3 mx-auto">
         <div class="text-sm breadcrumbs">
             <ul>
                 <li><a href="/">Demos</a></li>
-                <li>Markdown</li>
+                <li>Mermaid</li>
             </ul>
         </div>
 
-        <section class="prose">
-            {% markdown '_markdown/demo.md' %}
-        </section>
+        <div class="mermaid">
+            graph TD
+            A[Client] --> B[Load Balancer]
+            B --> C[Server01]
+            B --> D[Server02]
+        </div>
     </div>
 
     <script src="//cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>

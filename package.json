@@ -9,13 +9,19 @@
     "dev": "concurrently 'npm:dev:*'",
     "build:tailwind": "tailwindcss -i ./tailwind.css -o ./public/app.css --minify",
     "build": "concurrently 'npm:build:*'",
-    "postinstall": "cd python; pip install -r requirements.txt",
+    "postinstall": "pip install -r requirements.txt",
+    "update:javascript": "npm update",
+    "update:python": "pip install -U -r requirements.txt",
+    "update": "concurrently 'npm:update:*'",
     "start:node": "node server/index.js",
     "start": "concurrently 'npm:start:*'"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@tailwindcss/typography": "^0.5.3",
+    "concurrently": "^7.2.2",
+    "daisyui": "^2.20.0",
     "express": "^4.18.1",
     "express-http-proxy": "^1.6.3",
     "highlight.js": "^11.5.1",
@@ -23,15 +29,10 @@
     "luxon": "^2.4.0",
     "marked": "^4.0.17",
     "node-fetch": "^2.6.7",
+    "nodemon": "^2.0.19",
     "numeral": "^2.0.6",
     "nunjucks": "^3.2.3",
-    "pythonia": "^1.0.0"
-  },
-  "devDependencies": {
-    "@tailwindcss/typography": "^0.5.3",
-    "concurrently": "^7.2.2",
-    "daisyui": "^2.18.1",
-    "nodemon": "^2.0.19",
+    "pythonia": "^1.0.0",
     "tailwindcss": "^3.1.5"
   }
 }

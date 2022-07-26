@@ -1,11 +1,5 @@
 {% extends "_includes/layouts/layout.njk" %}
-
-{% block scripts %}
-    {{ super() }}
-    <script src="//unpkg.com/htmx.org@1.7.0"></script>
-    <script src="//unpkg.com/htmx.org/dist/ext/client-side-templates.js"></script>
-    <script src="//mozilla.github.io/nunjucks/files/nunjucks.js"></script>
-{% endblock %}
+{% block title %}Htmx Demo {% endblock %}
 
 {% block content %}
     <div class="container px-6 py-3 mx-auto">
@@ -16,14 +10,17 @@
             </ul>
         </div>
 
-        <div class="tabs">
-            <a class="tab tab-bordered" hx-get="/fragments/client-side-template" hx-target="#target">Client Side
+        <div class="tabs" hx-target="#target">
+            <a class="tab tab-bordered" hx-get="/fragments/client-side-template">Client Side
                 Template</a>
-            <a class="tab tab-bordered" hx-get="/fragments/click-to-edit" hx-target="#target">Click To Edit</a>
+            <a class="tab tab-bordered" hx-get="/fragments/click-to-edit">Click To Edit</a>
         </div>
 
     </div>
     <div class="container px-6 py-3 mx-auto">
         <div id="target"></div>
     </div>
+
+    <script src="//unpkg.com/htmx.org/dist/ext/client-side-templates.js"></script>
+    <script src="//mozilla.github.io/nunjucks/files/nunjucks.js"></script>
 {% endblock %}

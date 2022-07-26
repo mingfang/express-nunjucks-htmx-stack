@@ -25,7 +25,7 @@ function MarkdownTag(env, renderer = initMarked().parse) {
   this.blockTag = function (environment, body, tagStart) {
     let text = body()
     const tagStartValue = tagStart()
-    
+
     if (tagStartValue > 0) {
       text = text.split(/\r?\n/)
       text = text.map(function (line) {
@@ -57,7 +57,7 @@ function initMarked() {
       const language = hljs.getLanguage(lang) ? lang : 'plaintext'
       return hljs.highlight(code, {language}).value
     },
-    langPrefix: 'hljs language-', // highlight.js css expects a top-level 'hljs' class.
+    langPrefix: 'hljs ',
     pedantic: false,
     gfm: true,
     breaks: false,

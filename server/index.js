@@ -1,30 +1,27 @@
 const fs = require('fs')
 const path = require('path')
 const {server, listen} = require('./express.config')
-const {render} = require('./nunjucks/nunjucks.config')
+const {env, render} = require('./nunjucks/nunjucks.config')
+const {config: pythonConfig} = require('./python/python.config')
 
-/* python */
-const python = require('pythonia').python
-let example, pandas
-const pyFile = path.resolve(__dirname, '../python/add.py')
-const pandasFile = path.resolve(__dirname, '../python/pandas.py')
+let add
+let pandas
 
-;(async () => {
-    example = await python(pyFile)
-    pandas = await python(pandasFile)
-  }
-)()
+;(async ()=>{
+  ({add, pandas} = await pythonConfig())
+
+  env.addGlobal('add', add)
+  env.addGlobal('pandas', pandas)
+})()
 
 server.get('/python/add/:op1/:op2', async (req, res) => {
-  const value = await example.add(Number(req.params['op1']), Number(req.params['op2']))
+  const value = await add.add(Number(req.params['op1']), Number(req.params['op2']))
   res.send(`${value}`)
 })
 server.get('/pandas/random', async (req, res) => {
-
   res.send(await pandas.random())
 })
 
-/* render *.njk files relative to templates dir */
 
 const renderPath = (subPath = '.') =>
   (req, res) => {
@@ -32,6 +29,7 @@ const renderPath = (subPath = '.') =>
     render(`${subPath}/${template}`, req, res)
   }
 
+/* render *.njk files relative to templates dir */
 server.get('/:template?', renderPath())
 
 /* render from sub directories */

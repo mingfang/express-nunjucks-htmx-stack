@@ -6,10 +6,28 @@ const markdown = require('./markdown-tag')
 
 /* Nunjucks Env */
 
-const env = nunjucks.configure('templates', {
-  autoescape: false,
+function ReadmeLoader() {
+  this.fileSystemLoader = new nunjucks.FileSystemLoader('.', {
+    watch: process.env.NODE_ENV === 'development',
+  })
+}
+
+ReadmeLoader.prototype.getSource = function (name) {
+  if ('README.md' === name) {
+    return this.fileSystemLoader.getSource(name)
+  } else {
+    return null
+  }
+}
+
+templatesLoader = new nunjucks.FileSystemLoader('templates', {
   watch: process.env.NODE_ENV === 'development',
 })
+
+const env = new nunjucks.Environment([new ReadmeLoader, templatesLoader], {
+  autoescape: false,
+})
+
 
 /* Extensions */
 env.addExtension('markdown', markdown(env))

@@ -1,9 +1,5 @@
 {% extends "_includes/layouts/layout.njk" %}
-
-{% block scripts %}
-    {{ super() }}
-    <script src="//unpkg.com/htmx.org@1.7.0"></script>
-{% endblock %}
+{% block title %}Python Demo {% endblock %}
 
 {% block content %}
     <div class="container px-6 py-3 mx-auto">
@@ -14,11 +10,12 @@
             </ul>
         </div>
 
-        <div class="tabs">
-            <a class="tab tab-bordered" hx-get="/python/add/2/3" hx-target="#target">Add 2 + 3 =</a>
+        <div class="tabs" hx-target="#target">
+            <a class="tab tab-bordered" hx-get="/python/add/2/3" >Add 2 + 3 =</a>
             <a class="tab tab-bordered" hx-get="/pandas/random" hx-target="#target">Pandas</a>
         </div>
     </div>
+
     <div class="container px-6 py-3 mx-auto">
         <div id="target"></div>
     </div>
