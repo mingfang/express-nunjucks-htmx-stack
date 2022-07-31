@@ -3,6 +3,7 @@ const server = express()
 
 /* public static */
 server.use('/', express.static('public'))
+server.use('/', express.static('dist'))
 /* for missing favicon */
 server.get('/favicon.ico', (req, res) => res.sendStatus(204));
 

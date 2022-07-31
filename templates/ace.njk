@@ -1,0 +1,23 @@
+{% extends "_includes/layouts/layout.njk" %}
+{% block title %}Monaco Demo{% endblock %}
+
+{% block scripts %}
+{% endblock %}
+
+{% block content %}
+    <div class="container px-6 py-3 mx-auto">
+        <div id="editor" class="min-h-screen relative">function foo(items) {
+    var x = "All this is syntax highlighted";
+    return x;
+}
+        </div>
+    </div>
+
+    <script type="module" src="ace.js"></script>
+    <script type="module">
+      const editor = ace.edit('editor')
+      editor.setTheme("ace/theme/monokai");
+      editor.session.setMode("ace/mode/javascript");
+      editor.session.setUseWorker(false);
+    </script>
+{% endblock %}

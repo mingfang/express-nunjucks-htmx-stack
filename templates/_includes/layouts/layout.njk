@@ -8,10 +8,13 @@
 
     <title>{% block title %}Nunjucks Starter{% endblock %}</title>
 
-    <link href="/app.css" rel="stylesheet">
+    <link href="/main.css" rel="stylesheet">
+    {% block styles %}
+    {% endblock %}
 
-    <script src="//unpkg.com/htmx.org@1.8.0"></script>
-    <script src="//cdn.jsdelivr.net/npm/theme-change@2.0.2/index.js"></script>
+    <script src="/main.js"></script>
+    {% block scripts %}
+    {% endblock %}
 </head>
 <body>
 

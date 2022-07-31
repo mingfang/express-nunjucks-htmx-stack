@@ -1,0 +1,78 @@
+{% extends "_includes/layouts/layout.njk" %}
+{% block title %}Sortable Demo{% endblock %}
+
+{% set data = [
+    {name: "Hart Hagerty", country: "United States", text: "Zemlak, Daniel and Leannon", job: "Desktop Support Technician", color: "Purple"},
+    {name: "Brice Swyre", country: "China", text: "Carroll Group", job: "Tax Accountant", color: "Red"},
+    {name: "Marjy Ferencz", country: "Russia", text: "Rowe-Schoen", job: "Office Assistant I", color: "Crimson"},
+    {name: "Yancy Tear", country: "Brazil", text: "Wyman-Ledner", job: "Community Outreach Specialist", color: "Indigo"}
+] %}
+
+{% block content %}
+    <link rel="stylesheet" href="/sortable.css"/>
+
+    <div class="container px-6 py-3 mx-auto">
+        <div class="overflow-x-auto w-full">
+            <table class="table w-full">
+                <thead>
+                <tr>
+                    <th></th>
+                    <th>Name</th>
+                    <th>Job</th>
+                    <th>Favorite Color</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody class="sortable">
+                {% for each in data %}
+                    <tr>
+                        <th>
+                            <span class="handle"><i class="fa-solid fa-grip-lines"></i></span>
+                        </th>
+                        <td>
+                            <div class="flex items-center space-x-3">
+                                <div>
+                                    <div class="font-bold">{{ each.name }}</div>
+                                    <div class="text-sm opacity-50">{{ each.country }}</div>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            {{ each.text }}
+                            <br>
+                            <span class="badge badge-ghost badge-sm">{{ each.job }}</span>
+                        </td>
+                        <td>{{ each.color }}</td>
+                        <th>
+                            <button class="btn btn-ghost btn-xs">details</button>
+                        </th>
+                    </tr>
+                {% endfor %}
+                </tbody>
+                <!-- foot -->
+                <tfoot>
+                <tr>
+                    <th></th>
+                    <th>Name</th>
+                    <th>Job</th>
+                    <th>Favorite Color</th>
+                    <th></th>
+                </tr>
+                </tfoot>
+
+            </table>
+        </div>
+    </div>
+
+    <script type="module" src="sortable.js"></script>
+    <script type="module">
+      const sortables = document.querySelectorAll('.sortable')
+      for (let i = 0; i < sortables.length; i++) {
+        const sortable = sortables[i]
+        new Sortable(sortable, {
+          animation: 150,
+          handle: '.handle',
+        })
+      }
+    </script>
+{% endblock %}

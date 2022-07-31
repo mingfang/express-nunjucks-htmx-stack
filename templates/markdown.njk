@@ -2,7 +2,7 @@
 {% block title %}Markdown Demo {% endblock %}
 
 {% block content %}
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/highlightjs-themes@1.0.0/tomorrow-night-blue.css">
+    <link rel="stylesheet" href="markdown.css">
 
     <div class="container px-6 py-3 mx-auto">
         <div class="text-sm breadcrumbs">
@@ -17,7 +17,7 @@
         </section>
     </div>
 
-    <script src="//cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script type="module" src="markdown.js"></script>
     <script type="module">
       mermaid.init()
     </script>
