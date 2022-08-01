@@ -11,15 +11,19 @@
         </div>
 
         <div class="tabs" hx-target="#target">
-            <a class="tab tab-bordered" hx-get="/fragments/client-side-template">Client Side
-                Template</a>
-            <a class="tab tab-bordered" hx-get="/fragments/click-to-edit">Click To Edit</a>
+            <a class="tab tab-bordered" hx-get="fragments/client-side-template">
+                Client Side Template
+            </a>
+            <a class="tab tab-bordered" hx-get="fragments/click-to-edit">
+                Click To Edit
+            </a>
         </div>
 
     </div>
+
     <div class="container px-6 py-3 mx-auto">
         <div id="target"></div>
     </div>
 
-    <script type="module" src="htmx.js"></script>
+    <script type="module" src="/htmx/htmx.js"></script>
 {% endblock %}

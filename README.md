@@ -6,8 +6,10 @@ Features
 - Nunjucks client side templating with [Htmx extension](https://htmx.org/extensions/client-side-templates/)
 - [Htmx](https://htmx.org) for dynamic client experience
 - Styling with [DaisyUI](https://daisyui.com) and [Tailwind CSS](https://tailwindcss.com)
+- Bundling with [Parcel](https://parceljs.org)
 - Integrate with Python using [JSPython](https://github.com/extremeheat/JSPyBridge)
 - Integrate with [Mermaid](https://mermaid-js.github.io)
+- Integrate with [Ace](https://ace.c9.io)
 
 ### Dev
 ```shell

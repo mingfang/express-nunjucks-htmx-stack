@@ -9,7 +9,7 @@
 ] %}
 
 {% block content %}
-    <link rel="stylesheet" href="/sortable.css"/>
+    <link rel="stylesheet" href="/sortable/sortable.css"/>
 
     <div class="container px-6 py-3 mx-auto">
         <div class="overflow-x-auto w-full">
@@ -64,7 +64,7 @@
         </div>
     </div>
 
-    <script type="module" src="sortable.js"></script>
+    <script type="module" src="/sortable/sortable.js"></script>
     <script type="module">
       const sortables = document.querySelectorAll('.sortable')
       for (let i = 0; i < sortables.length; i++) {
