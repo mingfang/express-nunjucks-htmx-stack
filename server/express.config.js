@@ -1,5 +1,9 @@
 const express = require('express')
+const bodyParser = require('body-parser')
+
 const server = express()
+server.use(bodyParser.urlencoded({ extended: false }))
+server.use(bodyParser.json())
 
 /* public static */
 server.use('/', express.static('public'))
