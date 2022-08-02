@@ -10,6 +10,7 @@ Features
 - Integrate with Python using [JSPython](https://github.com/extremeheat/JSPyBridge)
 - Integrate with [Mermaid](https://mermaid-js.github.io)
 - Integrate with [Ace](https://ace.c9.io)
+- Integrate with [Sortable](https://sortablejs.github.io/Sortable/)
 
 ### Dev
 ```shell
