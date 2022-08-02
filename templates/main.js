@@ -1,2 +1,3 @@
 import 'htmx.org'
-import 'theme-change'
+import { themeChange } from 'theme-change'
+themeChange()

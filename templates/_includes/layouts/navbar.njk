@@ -11,14 +11,19 @@
 
 {% set requestUrl = req.originalUrl.split()[0] %}
 
-<div class="navbar" id="navbar" hx-swap-oob="true">
+<div class="navbar">
+    <div class="navbar-start">
+        <a class="btn btn-ghost normal-case text-xl" href="/">daisyUI</a>
+    </div>
+
     <div class="navbar-center"
+         id="navbar-center"
+         hx-swap-oob="true"
          hx-boost="true"
          hx-select="#hx-content"
          hx-target="#hx-content"
          hx-swap="outerHTML show:window:top"
     >
-        <a class="btn btn-ghost normal-case text-xl" href="/">daisyUI</a>
         <ul class="tabs">
             {% for item in navItems %}
                 {% set isActive = item.route == requestUrl  %}
