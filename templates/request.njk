@@ -1,0 +1,35 @@
+{% extends "_includes/layouts/layout.njk" %}
+
+{% block content %}
+    <div class="container px-6 py-3 mx-auto">
+        <div class="flex space-x-3"
+             hx-select="#hx-content"
+             hx-target="#hx-content"
+        >
+            <a class="link link-hover" hx-get="/request">hx-get</a>
+            <a id="trigger-id" name="trigger-name" class="link link-hover" hx-get="/request">hx-trigger</a>
+            <a class="link link-hover" hx-post="/request">hx-post</a>
+            <a class="link link-hover" hx-get="/request" hx-vars="foo:'bar'">hx-vars</a>
+            <span>
+                <input class="input input-xs input-bordered" name="input" type="input" placeholder="Type here"/>
+                <button class="btn btn-xs" hx-post="/request" hx-include="[name='input']">Submit</button>
+            </span>
+        </div>
+    </div>
+
+    <div class="container px-6 py-3 mx-auto">
+        <div><span>method: {{ req.method }}</span> <span>url: {{ req.originalUrl }}</span></div>
+
+        <div>params</div>
+        <pre>{{ req.params | dump(2) }}</pre>
+
+        <div>query</div>
+        <pre>{{ req.query| dump(2) }}</pre>
+
+        <div>body</div>
+        <pre>{{ req.body| dump(2) }}</pre>
+
+        <div>headers</div>
+        <pre>{{ req.headers| dump(2) }}</pre>
+    </div>
+{% endblock %}
