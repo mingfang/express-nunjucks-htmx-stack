@@ -30,7 +30,7 @@ const renderPath = (subPath = '.') =>
   }
 
 /* render *.njk files relative to templates dir */
-server.get('/:template?', renderPath())
+server.all('/:template?', renderPath())
 
 /* render from sub directories */
 
@@ -47,7 +47,7 @@ const walkDir = (dir, callback) => {
 const basePath = path.resolve(__dirname, '../templates')
 walkDir(basePath, filePath => {
   const subPath = filePath.substring(basePath.length + 1)
-  server.get(`/${subPath}/:template?`, renderPath(subPath))
+  server.all(`/${subPath}/:template?`, renderPath(subPath))
 })
 
 /* start */
