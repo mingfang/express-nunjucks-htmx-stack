@@ -12,6 +12,8 @@ Features
 - Integrate with [Ace](https://ace.c9.io)
 - Integrate with [Sortable](https://sortablejs.github.io/Sortable/)
 
+### [Live Demo](https://express-nunjucks-htmx-stack.rebelsoft.com/)
+
 ### Dev
 ```shell
 npm run dev
