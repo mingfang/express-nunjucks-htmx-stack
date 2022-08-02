@@ -1,5 +1,6 @@
 .handle {
     opacity:0.2;
+    cursor: grab;
 }
 .sortable-chosen .handle{
     opacity: 1.0;
