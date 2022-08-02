@@ -13,6 +13,7 @@ RUN wget -O - https://bootstrap.pypa.io/get-pip.py | python
 WORKDIR /app
 
 COPY package*.json ./
+COPY requirements.txt ./
 RUN npm install
 
 COPY . .
