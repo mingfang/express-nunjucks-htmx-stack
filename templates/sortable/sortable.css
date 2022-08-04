@@ -1,22 +1,59 @@
+/* handle to start drag */
+
 .handle {
-    opacity:0.2;
+    opacity: 0.2;
     cursor: grab;
 }
-.sortable-chosen .handle{
-    opacity: 1.0;
-}
+
+/* drag ghost */
+
 .sortable-ghost {
-    opacity: 0.0;
+    opacity: 0.5;
+    border: 2px dotted blue;
 }
+
+/* animate remove row */
 
 tr.htmx-swapping td {
     opacity: 0;
     transition: opacity 1s ease-out;
 }
 
+/* size data columns */
+
 tbody td {
     max-width: 200px;
     word-wrap: break-word;
 }
 
+/* size handle column */
 
+.sortable tr th:nth-child(1) {
+    width: 19px;
+    padding-left: 12px;
+    padding-right: 0px;
+}
+
+/* hide rows */
+
+.hide-rows tbody tr {
+    display: none;
+}
+.hide-rows thead tr:nth-child(2) {
+    display: none;
+}
+
+/* show handle only when rows are hidden */
+
+thead .handle {
+    display: none
+}
+.hide-rows thead .handle {
+    display: block
+}
+tfoot .handle {
+    display: none
+}
+.hide-rows tfoot .handle {
+    display: block
+}

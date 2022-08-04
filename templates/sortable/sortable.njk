@@ -8,71 +8,190 @@
     {name: "Yancy Tear", country: "Brazil", text: "Wyman-Ledner", job: "Community Outreach Specialist", color: "Indigo"}
 ] %}
 
+{% set stages = [{name: "stage 1"}, {name: "stage 2"}, {name: "stage 3"}] %}
+{% set currentStage = stages[0] %}
+
 {% block content %}
     <link rel="stylesheet" href="/sortable/sortable.css"/>
 
+    {# stages #}
     <div class="container px-6 py-3 mx-auto">
-        <div class="overflow-x-auto w-full">
-            <table class="table w-full">
-                <thead>
-                <tr>
-                    <th></th>
-                    <th>Name</th>
-                    <th>Job</th>
-                    <th>Favorite Color</th>
-                    <th></th>
-                </tr>
-                </thead>
-                <tbody class="sortable">
-                {% for each in data %}
+        <div class="flex flex-col">
+
+            <ul class="steps">
+                {% for stage in stages %}
+                    <li class="step">{{ stage.name }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    {# steps #}
+    <div class="container px-6 py-3 mx-auto">
+        <div class="flex justify-end space-x-3">
+            <div class="dropdown dropdown-left dropdown-hover">
+                <button class="btn btn-ghost btn-xs rounded-full">
+                    <i class="fa-solid fa-gear"></i>
+                </button>
+                <ul tabindex="0"
+                    class="dropdown-content menu menu-compact bg-secondary rounded-box w-36">
+                    <li><a _="on click
+                        toggle .hide-rows on <table/>
+                        toggle .fa-rotate-270 on first .fa-angles-down in me
+                        toggle .fa-rotate-270 on .fa-angle-down
+                     end">
+                            Collapse All
+                        </a>
+                    </li>
+                    <li><a _="on click
+                        toggle .hide-rows on <table/>
+                        toggle .fa-rotate-270 on first .fa-angles-down in me
+                        toggle .fa-rotate-270 on .fa-angle-down
+                     end">
+                            Expand All
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="flex flex-col space-y-1 w-full sortable sortable-group1">
+            {% for i in range(0, 4) -%}
+                {# tasks #}
+                <table class="table w-full">
+                    <thead>
+                    <tr>
+                        <th>
+                            <span _="on click
+                                        toggle .hide-rows on closest <table/>
+                                        toggle .fa-rotate-270 on first .fa-angle-down in me
+                                     end">
+                                <i class="fa-solid fa-angle-down"></i>
+                            </span>
+                        </th>
+                        <th colspan="3">
+                            <ul class="steps steps-vertical">
+                                <li data-content="{{ loop.index }}" class="step step-neutral"> Step {{ loop.index }}
+                                </li>
+                            </ul>
+                        </th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <th>
+                        </th>
+                        <th>Name</th>
+                        <th>Job</th>
+                        <th>Favorite Color</th>
+                        <th>Actions</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+
+                    <tbody class="sortable sortable-group2">
+                    {% for each in data %}
+                        <tr>
+                            <th>
+                                <span class="handle"><i class="fa-solid fa-grip-lines"></i></span>
+                            </th>
+                            <td>
+                                <div class="flex items-center space-x-3">
+                                    <div>
+                                        <div class="font-bold">{{ each.name }}</div>
+                                        <div class="text-sm opacity-50">{{ each.country }}</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                {{ each.text }}
+                                <br>
+                                <span class="badge badge-ghost badge-sm">{{ each.job }}</span>
+                            </td>
+                            <td>{{ each.color }}</td>
+                            <td>
+                                <button class="btn btn-accent btn-xs rounded-full"
+                                >
+                                    <i class="fa-solid fa-envelope"></i>
+                                    Send Email
+                                </button>
+                                <button class="btn btn-accent btn-xs rounded-full"
+                                >
+                                    <i class="fa-solid fa-circle-check"></i>
+                                    Mark Done
+                                </button>
+                            </td>
+                            <th class="text-right w-2">
+                                <div class="dropdown dropdown-left dropdown-hover">
+                                    <button class="btn btn-ghost btn-xs rounded-full">
+                                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                                    </button>
+                                    <ul tabindex="0"
+                                        class="dropdown-content menu menu-compact bg-secondary rounded-box w-36">
+                                        <li><a>Details</a></li>
+                                        <li>
+                                            <a hx-get="/workflow/fragments/delete"
+                                               hx-swap="outerHTML swap:0.5s"
+                                            >
+                                                Delete
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </th>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+
+                    <tbody id="new-row"
+                           hx-target="closest tr"
+                           hx-swap="innerHTML"
+                    >
+                    {# swap new row here #}
+                    </tbody>
+
+                    <tfoot>
                     <tr>
                         <th>
                             <span class="handle"><i class="fa-solid fa-grip-lines"></i></span>
                         </th>
-                        <td>
-                            <div class="flex items-center space-x-3">
-                                <div>
-                                    <div class="font-bold">{{ each.name }}</div>
-                                    <div class="text-sm opacity-50">{{ each.country }}</div>
-                                </div>
+                        <th colspan="5">
+                            <div class="flex justify-center space-x-4">
+                                <button class="btn btn-ghost btn-xs"
+                                        hx-target="#new-row"
+                                        hx-get="/workflow/fragments/add"
+                                >
+                                    Add Row
+                                </button>
+                                <button class="btn btn-ghost btn-xs"
+                                        hx-target="#new-group"
+                                        hx-get="/workflow/fragments/add"
+                                >
+                                    Add Group
+                                </button>
                             </div>
-                        </td>
-                        <td>
-                            {{ each.text }}
-                            <br>
-                            <span class="badge badge-ghost badge-sm">{{ each.job }}</span>
-                        </td>
-                        <td>{{ each.color }}</td>
-                        <th>
-                            <button class="btn btn-ghost btn-xs">details</button>
                         </th>
                     </tr>
-                {% endfor %}
-                </tbody>
-                <!-- foot -->
-                <tfoot>
-                <tr>
-                    <th></th>
-                    <th>Name</th>
-                    <th>Job</th>
-                    <th>Favorite Color</th>
-                    <th></th>
-                </tr>
-                </tfoot>
-
-            </table>
+                    </tfoot>
+                </table>
+            {%- endfor %}
         </div>
     </div>
 
     <script type="module" src="/sortable/sortable.js"></script>
     <script type="module">
-      const sortables = document.querySelectorAll('.sortable')
-      for (let i = 0; i < sortables.length; i++) {
-        const sortable = sortables[i]
-        new Sortable(sortable, {
-          animation: 150,
-          handle: '.handle',
-        })
+      const sortableGroup = (group) => {
+        const sortables = document.querySelectorAll(`.${group}`)
+        for (let i = 0; i < sortables.length; i++) {
+          const sortable = sortables[i]
+          new Sortable(sortable, {
+            animation: 150,
+            group: group,
+            handle: '.handle',
+          })
+        }
       }
+      sortableGroup('sortable-group1')
+      sortableGroup('sortable-group2')
     </script>
 {% endblock %}
